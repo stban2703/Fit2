@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import "reset";
 @import "introduction";
 @import "recommendation";
@@ -6,10 +6,32 @@
 @import "select";
 @import "button";
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
     background-color: black;
+}
+
+.checkBox {
+    display: flex;
+    align-items: center;
+
+    input {
+        -ms-transform: scale(2); /* IE */
+        -moz-transform: scale(2); /* FF */
+        -webkit-transform: scale(2); /* Safari and Chrome */
+        -o-transform: scale(2); /* Opera */
+        transform: scale(2);
+        padding: 10px;
+        margin-right: 10px;
+    }
+    
+    label {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        color: white;
+    }
 }
 
 .listSection {
@@ -19,10 +41,14 @@ html, body {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
 
     &__title {
         color: white;
         font-family: "Poppins", sans-serif;
         font-size: 1.2rem;
+        margin-bottom: 20px;
     }
 }
