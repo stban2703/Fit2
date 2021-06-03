@@ -1,11 +1,12 @@
 const friendsForm = document.querySelector(".friendsForm");
 const friendsFormActivityInput = friendsForm.activitiesNumber;
 const friendsFormAggregationSelect = friendsForm.aggregationMethod;
+const friendsFormUserName = friendsForm.userName;
 
 let activityUrl = './../src/databases/bdActividades.csv';
 let fruitUrl = './../src/databases/bdFrutas.csv';
-let activityList = [];
-let fruitList = [];
+let activityData = [];
+let fruitData = [];
 let nameList = [];
 
 loadData("activity", activityUrl);
@@ -14,11 +15,28 @@ loadNameList(activityUrl);
 
 friendsForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    let user = getPersonFromList(activityData, friendsFormUserName.value);
     let selectedFriends = getSelectedFriends();
-
-    console.log(selectedFriends);
-    console.log(friendsFormActivityInput.value);
-    console.log(friendsFormAggregationSelect.value);
+    let activityNumber = friendsFormActivityInput.value;
+    let aggregationMethod = friendsFormAggregationSelect.value;
+    let friendsSimilarityList = getFriendsSimilarity(user, selectedFriends);
+    let leastMisseryActivityNames = getLeastMisseryList(selectedFriends, Object.keys(user));
+    let recommendedActivities = [];
+   
+    leastMisseryActivityNames.forEach(activity => {
+        let sum = 0;
+        friendsSimilarityList.forEach(neighbor => {
+            sum += neighbor[activity];
+        });
+        let average = sum / (friendsSimilarityList.length);
+        let newActivity = {
+            Nombre: activity,
+            Promedio: average
+        }
+        recommendedActivities.push(newActivity);
+    });
+    recommendedActivities = sortListDescendet(recommendedActivities, "Promedio");
+    console.log(recommendedActivities)
 })
 
 function loadData(targetList, url) {
@@ -30,12 +48,12 @@ function loadData(targetList, url) {
             switch (targetList) {
                 default:
                 case "activity":
-                    activityList = results.data;
-                    //console.log(activityList);
+                    activityData = results.data;
+                    //console.log(activityData);
                     break;
                 case "fruit":
-                    fruitList = results.data;
-                    //console.log(fruitList);
+                    fruitData = results.data;
+                    //console.log(fruitData);
                     break;
             }
         }
@@ -89,7 +107,7 @@ function getSelectedFriends() {
     const checkBoxes = friendCheckBoxList.querySelectorAll(".checkBox--friend");
     checkBoxes.forEach((elem) => {
         if (elem.checked) {
-            const newFriend = getPersonFromList(activityList, elem.value);
+            const newFriend = getPersonFromList(activityData, elem.value);
             selectedFriends.push(newFriend);
         }
     })
@@ -101,4 +119,81 @@ function getPersonFromList(list, value) {
         return elem.Nombre == value;
     });
     return person;
+}
+
+function getDotProduct(elemA, elemB) {
+    let dotProduct = 0;
+    let elemProps = Object.keys(elemA)
+    elemProps.splice(elemProps.findIndex(elem => elem === "Nombre"), 1);
+    for (let i = 0; i < elemProps.length; i++) {
+        let prop = elemProps[i];
+        dotProduct += (elemA[prop] * elemB[prop]);
+    }
+    return dotProduct;
+}
+
+function getMagnitude(elem) {
+    let magnitude = 0;
+    let elemProps = Object.keys(elem);
+    elemProps.splice(elemProps.findIndex(elem => elem === "Nombre"), 1);
+    for (let i = 0; i < elemProps.length; i++) {
+        let prop = elemProps[i];
+        magnitude += Math.pow(elem[prop], 2);
+    }
+    return Math.sqrt(magnitude);
+}
+
+function getCosineSimilarity(dotProduct, magnitudeA, magnitudeB) {
+    let cosineSimilarity = dotProduct / (magnitudeA * magnitudeB);
+    return cosineSimilarity;
+}
+
+function getCosineSimilarityToPercent(value) {
+    return Math.round(value * 100);
+}
+
+function getFriendsSimilarity(personA, list) {
+    let friendsSimilarity = [];
+    for (let i = 0; i < list.length; i++) {
+        const personB = list[i];
+        let dotProduct = getDotProduct(personA, personB);
+        let magnitudeA = getMagnitude(personA);
+        let magnitudeB = getMagnitude(personB);
+        let cosineSimilarity = getCosineSimilarity(dotProduct, magnitudeA, magnitudeB);
+        friendsSimilarity.push({
+            ...personB,
+            cosineSimilarity: cosineSimilarity
+        })
+    }
+    return friendsSimilarity;
+}
+
+function getLeastMisseryList(list, keys) {
+    let misseryListKeys = [];
+    list.forEach(neighbor => {
+        keys.forEach(k => {
+            if (neighbor[k] < 5) {
+                let temp = misseryListKeys.find(elem => {
+                    return elem === k;
+                })
+                if (!temp) {
+                    misseryListKeys.push(k);
+                }
+            }
+        })
+    });
+    let leastMisseryList = [...keys];
+    misseryListKeys.forEach(elem => {
+        let deleteIndex = leastMisseryList.indexOf(elem);
+        leastMisseryList.splice(deleteIndex, 1);
+    });
+    leastMisseryList.splice(leastMisseryList.indexOf("Nombre"), 1);
+    return leastMisseryList;
+}
+
+function sortListDescendet(list, key) {
+    let copy = list.sort((a, b) => {
+        return b[key] - a[key];
+    })
+    return copy;
 }
