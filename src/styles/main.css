@@ -333,15 +333,6 @@ input[type=button] {
   color: #6fd8da;
 }
 
-.recommendation__listSection {
-  width: 100%;
-  height: 460px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-}
-
 .recommendation__controls {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -446,12 +437,18 @@ html, body {
   background-color: black;
 }
 
-.opacityFilter {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  left: 0;
-  top: 0;
+.listSection {
   width: 100%;
-  height: 100%;
+  height: 460px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.listSection__title {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
 }
 /*# sourceMappingURL=main.css.map */
