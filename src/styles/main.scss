@@ -2,8 +2,10 @@
 @import "reset";
 @import "introduction";
 @import "recommendation";
+@import "listSection";
 @import "input";
 @import "select";
+@import "checkbox";
 @import "button";
 
 html,
@@ -11,52 +13,4 @@ body {
     width: 100%;
     height: 100%;
     background-color: black;
-}
-
-.checkBox {
-    display: flex;
-    align-items: center;
-
-    input {
-        -ms-transform: scale(2); /* IE */
-        -moz-transform: scale(2); /* FF */
-        -webkit-transform: scale(2); /* Safari and Chrome */
-        -o-transform: scale(2); /* Opera */
-        transform: scale(2);
-        padding: 10px;
-        margin-right: 10px;
-    }
-
-    label {
-        font-family: "Poppins", sans-serif;
-        font-size: 1.1rem;
-        color: white;
-    }
-}
-
-.listSection {
-    width: 100%;
-    height: 460px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 20px;
-
-    &__title {
-        color: white;
-        font-family: "Poppins", sans-serif;
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-    }
-
-    &__options {
-        display: flex;
-        width: 100%;
-        flex-flow: column wrap;
-        height: 400px;
-        padding-bottom: 10px;
-    }
 }

@@ -364,6 +364,49 @@ input[type=button] {
   margin: 10px 0;
 }
 
+.listSection {
+  width: 100%;
+  height: 460px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px 20px;
+}
+
+.listSection__title {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.listSection__options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  height: 400px;
+  padding-bottom: 10px;
+}
+
+.listSection--friendsResult {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .input {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -410,34 +453,6 @@ input[type=button] {
   font-size: 1.1rem;
 }
 
-.button {
-  background-color: #4CADAF;
-  border: none;
-  color: white;
-  font-weight: bold;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
-  border-radius: 40px;
-  width: 250px;
-  height: 50px;
-  margin: 10px;
-  -webkit-transition: all .2 ease-in;
-  transition: all .2 ease-in;
-}
-
-.button:hover {
-  background-color: #346566;
-  -webkit-transition: all .2s ease-out;
-  transition: all .2s ease-out;
-}
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-}
-
 .checkBox {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -464,40 +479,31 @@ body {
   color: white;
 }
 
-.listSection {
-  width: 100%;
-  height: 460px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 10px 20px;
-}
-
-.listSection__title {
+.button {
+  background-color: #4CADAF;
+  border: none;
   color: white;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  border-radius: 40px;
+  width: 250px;
+  height: 50px;
+  margin: 10px;
+  -webkit-transition: all .2 ease-in;
+  transition: all .2 ease-in;
 }
 
-.listSection__options {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.button:hover {
+  background-color: #346566;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+html,
+body {
   width: 100%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
-  height: 400px;
-  padding-bottom: 10px;
+  height: 100%;
+  background-color: black;
 }
 /*# sourceMappingURL=main.css.map */

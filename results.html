@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit2</title>
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+
+<body>
+    <form class="recommendation fruitForm">
+        <header class="recommendation__header">
+            <h2>Resultados de actividades físicas que puedes realizar con tu grupo de amigos</h2>
+        </header>
+        <section class="listSection"
+            style="background-image: url(./src/images/resultsBg.png);">
+            <article class="listContainer">
+                <h3 class="listContainer__title">Actividades físicas recomendadas</h3>
+                <section class="listContainer__listColums">
+                    <section class="resultList resultList--friends">
+                        <h4 class="resultList__title">Amigos</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                    <section class="resultList resultList--similarity">
+                        <h4 class="resultList__title">Afinidad</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                    <section class="resultList resultList--activities">
+                        <h4 class="resultList__title">Actividades</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                    <section  class="resultList resultList--average">
+                        <h4 class="resultList__title">Promedio</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                </section>
+            </article>
+            <article>
+
+            </article>
+            <article>
+
+            </article>
+        </section>
+        <footer class="recommendation__controls">
+            <section>
+                <div class="input input--small">
+                    <label for="fruitsNumber">Digita la cantidad de actividades que deseas</label>
+                    <input type="number" min="1" name="activitiesNumber" required>
+                </div>
+                <div class="select">
+                    <label for="aggregationMethod">Método de recomendación</label>
+                    <select name="aggregationMethod" required>
+                        <option value="average">Promedio</option>
+                        <option value="leastMisery">Mínima miseria</option>
+                    </select>
+                </div>
+            </section>
+            <button class="button">Buscar</button>
+        </footer>
+    </form>
+</body>
+
+</html>

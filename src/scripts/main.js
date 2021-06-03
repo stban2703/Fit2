@@ -8,6 +8,7 @@ let fruitUrl = './../src/databases/bdFrutas.csv';
 let activityData = [];
 let fruitData = [];
 let nameList = [];
+let myStorage = window.localStorage;
 
 loadData("activity", activityUrl);
 loadData("fruit", fruitUrl);
@@ -19,10 +20,11 @@ friendsForm.addEventListener("submit", (event) => {
     let selectedFriends = getSelectedFriends();
     let activityNumber = friendsFormActivityInput.value;
     let aggregationMethod = friendsFormAggregationSelect.value;
+    let activitiesKeys = Object.keys(user).filter(elem => elem != "Nombre");
     let friendsSimilarityList = getFriendsSimilarity(user, selectedFriends);
     let leastMisseryActivityNames = getLeastMisseryList(selectedFriends, Object.keys(user));
-
     let recommendedActivities = [];
+    let userFavoriteActivities = [];
 
     if (aggregationMethod == "leastMisery") {
         recommendedActivities = getListKeyAverage(leastMisseryActivityNames, friendsSimilarityList)
@@ -30,8 +32,21 @@ friendsForm.addEventListener("submit", (event) => {
         recommendedActivities = getListKeyAverage(Object.keys(user).filter(elem => elem != "Nombre"), friendsSimilarityList);
     }
     recommendedActivities = sortListDescendet(recommendedActivities, "Promedio").splice(0, activityNumber);
-    console.log(recommendedActivities)
 
+    activitiesKeys.forEach(elem => {
+        let object = {
+            Nombre: elem,
+            Promedio: user[elem]
+        }
+        userFavoriteActivities.push(object);
+    })
+    userFavoriteActivities = sortListDescendet(userFavoriteActivities, "Promedio");
+
+    myStorage.setItem("user", JSON.stringify(user));
+    myStorage.setItem("friendsSimilarityList", JSON.stringify(friendsSimilarityList));
+    myStorage.setItem("recommendedActivities", JSON.stringify(recommendedActivities));
+    myStorage.setItem("userFavoriteActivities", JSON.stringify(userFavoriteActivities));
+    location.href = "results.html";
 })
 
 function loadData(targetList, url) {
