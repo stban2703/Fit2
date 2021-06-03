@@ -21,22 +21,17 @@ friendsForm.addEventListener("submit", (event) => {
     let aggregationMethod = friendsFormAggregationSelect.value;
     let friendsSimilarityList = getFriendsSimilarity(user, selectedFriends);
     let leastMisseryActivityNames = getLeastMisseryList(selectedFriends, Object.keys(user));
+
     let recommendedActivities = [];
-   
-    leastMisseryActivityNames.forEach(activity => {
-        let sum = 0;
-        friendsSimilarityList.forEach(neighbor => {
-            sum += neighbor[activity];
-        });
-        let average = sum / (friendsSimilarityList.length);
-        let newActivity = {
-            Nombre: activity,
-            Promedio: average
-        }
-        recommendedActivities.push(newActivity);
-    });
+
+    if (aggregationMethod == "leastMisery") {
+        recommendedActivities = getListKeyAverage(leastMisseryActivityNames, friendsSimilarityList)
+    } else {
+        recommendedActivities = getListKeyAverage(Object.keys(user).filter(elem => elem != "Nombre"), friendsSimilarityList);
+    }
     recommendedActivities = sortListDescendet(recommendedActivities, "Promedio").splice(0, activityNumber);
-    
+    console.log(recommendedActivities)
+
 })
 
 function loadData(targetList, url) {
@@ -189,6 +184,23 @@ function getLeastMisseryList(list, keys) {
     });
     leastMisseryList.splice(leastMisseryList.indexOf("Nombre"), 1);
     return leastMisseryList;
+}
+
+function getListKeyAverage(keyList, neighborList) {
+    let averageList = [];
+    keyList.forEach(key => {
+        let sum = 0;
+        neighborList.forEach(neighbor => {
+            sum += neighbor[key];
+        });
+        let average = sum / (neighborList.length);
+        let newObject = {
+            Nombre: key,
+            Promedio: average
+        }
+        averageList.push(newObject);
+    });
+    return averageList;
 }
 
 function sortListDescendet(list, key) {
