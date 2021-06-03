@@ -35,8 +35,8 @@ friendsForm.addEventListener("submit", (event) => {
         }
         recommendedActivities.push(newActivity);
     });
-    recommendedActivities = sortListDescendet(recommendedActivities, "Promedio");
-    console.log(recommendedActivities)
+    recommendedActivities = sortListDescendet(recommendedActivities, "Promedio").splice(0, activityNumber);
+    
 })
 
 function loadData(targetList, url) {
