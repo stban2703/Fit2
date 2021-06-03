@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit2</title>
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+
+<body>
+    <form class="recommendation friendsForm">
+        <header class="recommendation__header">
+            <h2>Encontrar actividades físicas para tu grupo de amigos</h2>
+        </header>
+        <section class="recommendation__listSection recommendation__listSection--friends"
+            style="background-image: url(./src/images/otherimage.jpg);">
+            <h3>Seleciona tus amigos</h3>
+            <section>
+                <div class="checkBoxOption">
+                    <label for="Momoa">Momoa</label>
+                    <input type="checkbox" name="Momoa">
+                </div>
+            </section>
+        </section>
+        <footer class="recommendation__controls">
+            <section>
+                <div class="input">
+                    <label for="activitiesNumber">Digita la cantidad de actividades que deseas</label>
+                    <input type="number" name="activitiesNumber">
+                </div>
+                <div class="select">
+                    <label for="aggregationMethod">Método de recomendación</label>
+                    <select name="aggregationMethod">
+                        <option value="average">Promedio</option>
+                        <option value="leastMisery">Mínima miseria</option>
+                    </select>
+                </div>
+            </section>
+            <button class="button">Buscar</button>
+        </footer>
+    </form>
+</body>
+
+</html>
