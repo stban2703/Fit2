@@ -9,7 +9,6 @@
         align-items: center;
         justify-content: center;
         padding: 20px 0;
-        width: 100%;
         font-family: "Poppins", sans-serif;
         font-size: 1.4rem;
         color: #6fd8da;
@@ -17,7 +16,11 @@
 
     &__listSection {
         width: 100%;
-        height: 100%;
+        height: 460px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
     }
 
     &__controls {
@@ -26,6 +29,7 @@
         flex-direction: column;
         align-items: center;
         padding: 20px 0;
+        height: fit-content;
         section {
             display: flex;
             width: 100%;

@@ -328,7 +328,6 @@ input[type=button] {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 20px 0;
-  width: 100%;
   font-family: "Poppins", sans-serif;
   font-size: 1.4rem;
   color: #6fd8da;
@@ -336,7 +335,11 @@ input[type=button] {
 
 .recommendation__listSection {
   width: 100%;
-  height: 100%;
+  height: 460px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 .recommendation__controls {
@@ -352,6 +355,9 @@ input[type=button] {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .recommendation__controls section {
@@ -386,6 +392,10 @@ input[type=button] {
 .input input {
   font-family: 'Poppins', sans-serif;
   font-size: 1.1rem;
+}
+
+.input--small input {
+  width: 100px;
 }
 
 .select {
@@ -431,7 +441,17 @@ input[type=button] {
 }
 
 html, body {
+  width: 100%;
   height: 100%;
   background-color: black;
+}
+
+.opacityFilter {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=main.css.map */
