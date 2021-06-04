@@ -2,64 +2,18 @@
 @import "reset";
 @import "introduction";
 @import "recommendation";
+@import "listContainer";
 @import "listSection";
+@import "resultList";
 @import "input";
 @import "select";
 @import "checkbox";
 @import "button";
+@import "coincidence";
 
 html,
 body {
     width: 100%;
     height: 100%;
     background-color: black;
-}
-
-.listContainer {
-    display: flex;
-    flex-direction: column;
-
-    &__title {
-        color: white;
-        font-family: "Poppins", sans-serif;
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    &__listColums {
-        display: flex;
-    }
-}
-
-.resultList {
-    display: flex;
-    flex-direction: column;
-    margin-right: 40px;
-
-    &__title {
-        color: #6fd8da;
-        font-family: "Poppins", sans-serif;
-        font-size: 1.2rem;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    &__list {
-        list-style: none;
-        counter-reset: my-counter;
-    }
-
-    li {
-        color: white;
-        font-family: "Poppins", sans-serif;
-        counter-increment: my-counter;
-        list-style: none;
-
-        &::before {
-            content: counter(my-counter) ". ";
-            color: #6fd8da;
-            font-weight: bold;
-        }
-    }
 }
