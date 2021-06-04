@@ -19,9 +19,10 @@ renderListResult(recommendedActivities, "Nombre", resultListActivitiesContainer)
 renderListResult(recommendedActivities, "Promedio", resultListAverageContainer);
 renderListResult(userFavoriteActivities, "Nombre", resultListUserPreferenceContainer);
 renderListResult(userFavoriteActivities, "Promedio", resultListUserScoreContainer);
-renderCoincidences();
+renderCoincidences(recommendedActivities, userFavoriteActivities, coincidenceValueQuantitySpan, coincidenceValueAverageSpan);
 
 function renderListResult(list, key, htmmlParent) {
+    htmmlParent.innerHTML = ``;
     list.forEach((elem) => {
         const liElem = document.createElement("li");
         let text = "";
@@ -39,12 +40,15 @@ function renderListResult(list, key, htmmlParent) {
     });
 }
 
-function renderCoincidences() {
-    let counter = getCoincidenceCounter(recommendedActivities, userFavoriteActivities, "Nombre");
-    let total = recommendedActivities.length;
+function renderCoincidences(recommendationLlist, userFavoriteList, counterParent, averageParent) {
+    //let counter = getCoincidenceCounter(recommendedActivities, userFavoriteActivities, "Nombre");
+    let counter = getCoincidenceCounter(recommendationLlist, userFavoriteList, "Nombre");
+    let total = recommendationLlist.length;
 
-    coincidenceValueQuantitySpan.innerText = `${counter}/${total}`;
-    coincidenceValueAverageSpan.innerText = `${Math.round((counter / total) * 100)}%`
+    /*coincidenceValueQuantitySpan.innerText = `${counter}/${total}`;
+    coincidenceValueAverageSpan.innerText = `${Math.round((counter / total) * 100)}%`*/
+    counterParent.innerText = `${counter}/${total}`;
+    averageParent.innerText = `${Math.round((counter / total) * 100)}%`
 }
 
 function getCoincidenceCounter(listA, listB, key) {

@@ -41,7 +41,7 @@ friendsForm.addEventListener("submit", (event) => {
         userFavoriteActivities.push(object);
     })
     userFavoriteActivities = sortListDescendet(userFavoriteActivities, "Promedio").splice(0, activityNumber);
-    console.log(userFavoriteActivities)
+
     myStorage.setItem("user", JSON.stringify(user));
     myStorage.setItem("friendsSimilarityList", JSON.stringify(friendsSimilarityList));
     myStorage.setItem("recommendedActivities", JSON.stringify(recommendedActivities));
