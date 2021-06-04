@@ -19,25 +19,25 @@
             <article class="listContainer">
                 <h3 class="listContainer__title">Actividades físicas recomendadas</h3>
                 <section class="listContainer__listColums">
-                    <section class="resultList resultList--friends">
+                    <section class="resultList resultList--friendsActivity">
                         <h4 class="resultList__title">Amigos</h4>
                         <ol class="resultList__list">
 
                         </ol>
                     </section>
-                    <section class="resultList resultList--similarity">
+                    <section class="resultList resultList--similarityActivity">
                         <h4 class="resultList__title">Afinidad</h4>
                         <ol class="resultList__list">
 
                         </ol>
                     </section>
-                    <section class="resultList resultList--activities">
+                    <section class="resultList resultList--activitiesActivity">
                         <h4 class="resultList__title">Actividades</h4>
                         <ol class="resultList__list">
 
                         </ol>
                     </section>
-                    <section class="resultList resultList--average">
+                    <section class="resultList resultList--averageActivity">
                         <h4 class="resultList__title">Promedio</h4>
                         <ol class="resultList__list">
 
@@ -49,13 +49,13 @@
             <article class="listContainer">
                 <h3 class="listContainer__title">Tus preferencias</h3>
                 <section class="listContainer__listColums">
-                    <section class="resultList resultList--userPreferences">
+                    <section class="resultList resultList--userPreferencesActivity">
                         <h4 class="resultList__title">Actividades</h4>
                         <ol class="resultList__list">
 
                         </ol>
                     </section>
-                    <section class="resultList resultList--userScore">
+                    <section class="resultList resultList--userScoreActivity">
                         <h4 class="resultList__title">Calificación</h4>
                         <ol class="resultList__list">
 
@@ -67,16 +67,18 @@
             <article class="listContainer">
                 <h3 class="listContainer__title">Total de coincidencias</h3>
                 <section class="coincidence">
-                    <p class="coincidence__subtitle">Cantidad: <span class="coincidence__value coincidence__value--quantity">5/10</span></p>
-                    <p class="coincidence__subtitle">Porcentaje: <span class="coincidence__value coincidence__value--average">50%</span></p>
+                    <p class="coincidence__subtitle">Cantidad: <span
+                            class="coincidence__value coincidence__value--quantityActivity">5/10</span></p>
+                    <p class="coincidence__subtitle">Porcentaje: <span
+                            class="coincidence__value coincidence__value--averageActivity">50%</span></p>
                 </section>
             </article>
         </section>
         <footer class="recommendation__controls">
             <section>
                 <div class="input input--small">
-                    <label for="fruitsNumber">Digita la cantidad de actividades que deseas</label>
-                    <input type="number" min="1" name="activitiesNumber" required>
+                    <label for="fruitsNumber">Digita la cantidad de frutas que deseas</label>
+                    <input type="number" min="1" name="fruitNumber" required>
                 </div>
                 <div class="select">
                     <label for="aggregationMethod">Método de recomendación</label>
@@ -88,9 +90,76 @@
             </section>
             <button class="button">Buscar</button>
         </footer>
+
+        <!--Frutas-->
+
+        <header class="recommendation__header">
+            <h2>Resultados de frutas que puedes disfrutar con tu grupo de amigos</h2>
+        </header>
+        <section class="listSection listSection--friendsResult"
+            style="background-image: url(./src/images/fruitBg.png);">
+            <article class="listContainer">
+                <h3 class="listContainer__title">Actividades físicas recomendadas</h3>
+                <section class="listContainer__listColums">
+                    <section class="resultList resultList--friendsFruit">
+                        <h4 class="resultList__title">Amigos</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                    <section class="resultList resultList--similarityFruit">
+                        <h4 class="resultList__title">Afinidad</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                    <section class="resultList resultList--activitiesFruit">
+                        <h4 class="resultList__title">Actividades</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                    <section class="resultList resultList--averageFruit">
+                        <h4 class="resultList__title">Promedio</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                </section>
+            </article>
+
+            <article class="listContainer">
+                <h3 class="listContainer__title">Tus preferencias</h3>
+                <section class="listContainer__listColums">
+                    <section class="resultList resultList--userPreferencesFruit">
+                        <h4 class="resultList__title">Actividades</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                    <section class="resultList resultList--userScoreFruit">
+                        <h4 class="resultList__title">Calificación</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                </section>
+            </article>
+
+            <article class="listContainer">
+                <h3 class="listContainer__title">Total de coincidencias</h3>
+                <section class="coincidence">
+                    <p class="coincidence__subtitle">Cantidad: <span
+                            class="coincidence__value coincidence__value--quantityFruit">5/10</span></p>
+                    <p class="coincidence__subtitle">Porcentaje: <span
+                            class="coincidence__value coincidence__value--averageFruit">50%</span></p>
+                </section>
+            </article>
+        </section>
     </form>
     <script src="./src/lib/papaparse.min.js"></script>
     <script src="./src/scripts/result.js"></script>
+    <script src="./src/scripts/fruit.js"></script>
 </body>
 
 </html>

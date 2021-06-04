@@ -403,7 +403,9 @@ input[type=button] {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 10px 20px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 20px;
 }
 
 .listSection__title {
