@@ -18,35 +18,40 @@ friendsForm.addEventListener("submit", (event) => {
     event.preventDefault();
     let user = getPersonFromList(activityData, friendsFormUserName.value);
     let selectedFriends = getSelectedFriends();
-    let activityNumber = friendsFormActivityInput.value;
-    let aggregationMethod = friendsFormAggregationSelect.value;
-    let activitiesKeys = Object.keys(user).filter(elem => elem != "Nombre");
-    let friendsSimilarityList = sortListDescendet(getFriendsSimilarity(user, selectedFriends), "cosineSimilarity");
-    let leastMisseryActivityNames = getLeastMisseryList(selectedFriends, Object.keys(user));
-    let recommendedActivities = [];
-    let userFavoriteActivities = [];
 
-    if (aggregationMethod == "leastMisery") {
-        recommendedActivities = getListKeyAverage(leastMisseryActivityNames, friendsSimilarityList)
-    } else {
-        recommendedActivities = getListKeyAverage(Object.keys(user).filter(elem => elem != "Nombre"), friendsSimilarityList);
-    }
-    recommendedActivities = sortListDescendet(recommendedActivities, "Promedio").splice(0, activityNumber);
+    if (selectedFriends.length > 0) {
+        let activityNumber = friendsFormActivityInput.value;
+        let aggregationMethod = friendsFormAggregationSelect.value;
+        let activitiesKeys = Object.keys(user).filter(elem => elem != "Nombre");
+        let friendsSimilarityList = sortListDescendet(getFriendsSimilarity(user, selectedFriends), "cosineSimilarity");
+        let leastMisseryActivityNames = getLeastMisseryList(selectedFriends, Object.keys(user));
+        let recommendedActivities = [];
+        let userFavoriteActivities = [];
 
-    activitiesKeys.forEach(elem => {
-        let object = {
-            Nombre: elem,
-            Promedio: user[elem]
+        if (aggregationMethod == "leastMisery") {
+            recommendedActivities = getListKeyAverage(leastMisseryActivityNames, friendsSimilarityList)
+        } else {
+            recommendedActivities = getListKeyAverage(Object.keys(user).filter(elem => elem != "Nombre"), friendsSimilarityList);
         }
-        userFavoriteActivities.push(object);
-    })
-    userFavoriteActivities = sortListDescendet(userFavoriteActivities, "Promedio").splice(0, activityNumber);
+        recommendedActivities = sortListDescendet(recommendedActivities, "Promedio").splice(0, activityNumber);
 
-    myStorage.setItem("user", JSON.stringify(user));
-    myStorage.setItem("friendsSimilarityList", JSON.stringify(friendsSimilarityList));
-    myStorage.setItem("recommendedActivities", JSON.stringify(recommendedActivities));
-    myStorage.setItem("userFavoriteActivities", JSON.stringify(userFavoriteActivities));
-    location.href = "results.html";
+        activitiesKeys.forEach(elem => {
+            let object = {
+                Nombre: elem,
+                Promedio: user[elem]
+            }
+            userFavoriteActivities.push(object);
+        })
+        userFavoriteActivities = sortListDescendet(userFavoriteActivities, "Promedio").splice(0, activityNumber);
+
+        myStorage.setItem("user", JSON.stringify(user));
+        myStorage.setItem("friendsSimilarityList", JSON.stringify(friendsSimilarityList));
+        myStorage.setItem("recommendedActivities", JSON.stringify(recommendedActivities));
+        myStorage.setItem("userFavoriteActivities", JSON.stringify(userFavoriteActivities));
+        location.href = "results.html";
+    } else {
+        alert("Debes seleccionar al menos un amigo");
+    }
 })
 
 function loadData(targetList, url) {
