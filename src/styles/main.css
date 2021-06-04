@@ -405,6 +405,10 @@ input[type=button] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .input {
@@ -505,5 +509,66 @@ body {
   width: 100%;
   height: 100%;
   background-color: black;
+}
+
+.listContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.listContainer__title {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.listContainer__listColums {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.resultList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 40px;
+}
+
+.resultList__title {
+  color: #6fd8da;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.resultList__list {
+  list-style: none;
+  counter-reset: my-counter;
+}
+
+.resultList li {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  counter-increment: my-counter;
+  list-style: none;
+}
+
+.resultList li::before {
+  content: counter(my-counter) ". ";
+  color: #6fd8da;
+  font-weight: bold;
 }
 /*# sourceMappingURL=main.css.map */

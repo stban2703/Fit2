@@ -14,7 +14,7 @@
         <header class="recommendation__header">
             <h2>Resultados de actividades físicas que puedes realizar con tu grupo de amigos</h2>
         </header>
-        <section class="listSection"
+        <section class="listSection listSection--friendsResult"
             style="background-image: url(./src/images/resultsBg.png);">
             <article class="listContainer">
                 <h3 class="listContainer__title">Actividades físicas recomendadas</h3>
@@ -45,9 +45,27 @@
                     </section>
                 </section>
             </article>
-            <article>
+            
+            <article class="listContainer">
+                <h3 class="listContainer__title">Tus preferencias</h3>
+                <section class="listContainer__listColums">
+                    <section class="resultList resultList--userPreferences">
+                        <h4 class="resultList__title">Actividades</h4>
+                        <ol class="resultList__list">
 
-            </article>
+                        </ol>
+                    </section>
+                    <section class="resultList resultList--userScore">
+                        <h4 class="resultList__title">Calificación</h4>
+                        <ol class="resultList__list">
+
+                        </ol>
+                    </section>
+                </section>
+
+            </article class="listContainer">
+            <h3 class="listContainer__title">Total de coincidencias</h3>
+
             <article>
 
             </article>
@@ -69,6 +87,8 @@
             <button class="button">Buscar</button>
         </footer>
     </form>
+    <script src="./src/lib/papaparse.min.js"></script>
+    <script src="./src/scripts/result.js"></script>
 </body>
 
 </html>
