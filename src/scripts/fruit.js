@@ -60,6 +60,7 @@ fruitForm.addEventListener("submit", (event) => {
     renderListResult(userFavoriteFruits, "Nombre", resultListUserPreferenceFruitContainer);
     renderListResult(userFavoriteFruits, "Promedio", resultListUserScoreFruitContainer);
     renderCoincidences(recommendedFruits, userFavoriteFruits, coincidenceValueQuantityFruitSpan, coincidenceValueAverageFruitSpan);
+    window.location.href = "#friendsSection";
 })
 
 function loadData(targetList, url) {
