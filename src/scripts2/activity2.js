@@ -14,11 +14,11 @@ let myStorage = window.localStorage;
 
 loadData("activity", activityUrl);
 loadData("fruit", fruitUrl);
-loadNameList(activityUrl);
+loadNameList(fruitUrl);
 
 friendsForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    let user = getPersonFromList(activityData, friendsFormUserName.value);
+    let user = getPersonFromList(fruitData, friendsFormUserName.value);
     let selectedFriends = getSelectedFriends();
 
     if (selectedFriends.length > 0) {
@@ -50,7 +50,8 @@ friendsForm.addEventListener("submit", (event) => {
         myStorage.setItem("friendsSimilarityList", JSON.stringify(friendsSimilarityList));
         myStorage.setItem("recommendedActivities", JSON.stringify(recommendedActivities));
         myStorage.setItem("userFavoriteActivities", JSON.stringify(userFavoriteActivities));
-        location.href = "results.html";
+        console.log(myStorage.getItem('friendsSimilarityList'))
+        location.href = "results2.html";
     } else {
         alert("Debes seleccionar al menos un amigo");
     }
@@ -124,7 +125,7 @@ function getSelectedFriends() {
     const checkBoxes = friendCheckBoxList.querySelectorAll(".checkBox--friend");
     checkBoxes.forEach((elem) => {
         if (elem.checked) {
-            const newFriend = getPersonFromList(activityData, elem.value);
+            const newFriend = getPersonFromList(fruitData, elem.value);
             selectedFriends.push(newFriend);
         }
     })

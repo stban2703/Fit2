@@ -14,6 +14,7 @@ let user = JSON.parse(myStorage.getItem("user"));
 let friendsSimilarityList = JSON.parse(myStorage.getItem("friendsSimilarityList"));
 let recommendedActivities = JSON.parse(myStorage.getItem("recommendedActivities"));
 let userFavoriteActivities = JSON.parse(myStorage.getItem("userFavoriteActivities"));
+console.log(friendsSimilarityList)
 
 renderListResult(friendsSimilarityList, "Nombre", resultListFriendsContainer);
 renderListResult(friendsSimilarityList, "cosineSimilarity", resultListSimilarityContainer);

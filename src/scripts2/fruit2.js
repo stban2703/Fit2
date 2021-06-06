@@ -17,11 +17,11 @@ let fruitUrl = './../src/databases/bdFrutas.csv';
 let activityData = [];
 let fruitData = [];
 
-loadData("fruit", fruitUrl);
+loadData("activity", activityUrl);
 
 fruitForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    let fruitUser = getPersonFromList(fruitData, user.Nombre);
+    let fruitUser = getPersonFromList(activityData, user.Nombre);
     let fruitNumber = fruitFormFruitInput.value;
     let aggregationMethod = fruitFormAggregationSelect.value;
     let fruitKeys = Object.keys(fruitUser).filter(elem => elem != "Nombre");
@@ -30,7 +30,7 @@ fruitForm.addEventListener("submit", (event) => {
     let userFavoriteFruits = [];
 
     friendsSimilarityList.forEach((elemA) => {
-        let newElem = fruitData.find(elemB => {
+        let newElem = activityData.find(elemB => {
             return elemB.Nombre === elemA.Nombre;
         })
         fruitFriendsList.push(newElem);
