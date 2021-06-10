@@ -5,8 +5,8 @@ const friendsFormActivityInput = friendsForm.activitiesNumber;
 const friendsFormAggregationSelect = friendsForm.aggregationMethod;
 const friendsFormUserName = friendsForm.userName;
 
-let activityUrl = './../src/databases/bdActividades.csv';
-let fruitUrl = './../src/databases/bdFrutas.csv';
+let activityUrl = './src/databases/bdActividades.csv';
+let fruitUrl = './src/databases/bdFrutas.csv';
 let activityData = [];
 let fruitData = [];
 let nameList = [];
