@@ -12,8 +12,8 @@ const resultListUserScoreFruitContainer = document.querySelector(".resultList--u
 const coincidenceValueQuantityFruitSpan = document.querySelector(".coincidence__value--quantityFruit");
 const coincidenceValueAverageFruitSpan = document.querySelector(".coincidence__value--averageFruit");
 
-let activityUrl = './../src/databases/bdActividades.csv';
-let fruitUrl = './../src/databases/bdFrutas.csv';
+let activityUrl = './src/databases/bdActividades.csv';
+let fruitUrl = './src/databases/bdFrutas.csv';
 let activityData = [];
 let fruitData = [];
 
